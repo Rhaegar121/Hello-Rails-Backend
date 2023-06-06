@@ -21,8 +21,8 @@ module HelloRailsBackEnd
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'http://localhost:5173' # Replace with the URL of your frontend application
-        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options]
+        resource '*', headers: :any, methods: %i[get post put patch delete options]
       end
-    end    
+    end
   end
 end
