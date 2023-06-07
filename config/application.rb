@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -18,5 +18,11 @@ module HelloRailsBackEnd
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'http://localhost:5173' # Replace with the URL of your frontend application
+        resource '*', headers: :any, methods: %i[get post put patch delete options]
+      end
+    end
   end
 end
